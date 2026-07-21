@@ -74,7 +74,7 @@ export default function Hero() {
           LinkedIn
         </a>
         <a
-          href={`mailto:${site.links.email}`}
+          href="#contact"
           onClick={() => track("email_click", { location: "hero" })}
           className={`${buttonBase} border border-line text-foreground hover:border-accent hover:text-accent`}
         >
