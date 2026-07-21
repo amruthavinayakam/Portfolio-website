@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: `.dark` on <html> activates the dark: variant. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * ============================================================
+ *  PALETTE — "Ember & Ink"
+ *  A warm paper-white base with deep ink text and a refined
+ *  copper/terracotta accent. Distinctive without being loud.
+ * ============================================================
+ */
+:root {
+  --background: #faf9f7; /* warm paper white */
+  --surface: #ffffff; /* cards */
+  --surface-2: #f3f1ed; /* subtle fills (tags, code) */
+  --foreground: #1c1917; /* near-black warm ink */
+  --muted: #57534e; /* secondary text */
+  --faint: #79716b; /* tertiary text (dates, labels) */
+  --border: #e7e4df;
+  --accent: #b4451c; /* copper / terracotta */
+  --accent-hover: #963916;
+  --accent-soft: #f7ebe4; /* accent-tinted fill */
+  --accent-contrast: #ffffff; /* text on accent */
+}
+
+.dark {
+  --background: #131110; /* warm near-black */
+  --surface: #1c1917;
+  --surface-2: #262220;
+  --foreground: #ece9e6;
+  --muted: #a8a29e;
+  --faint: #8a827c;
+  --border: #2c2825;
+  --accent: #e8825a; /* lifted copper for dark bg */
+  --accent-hover: #f0997a;
+  --accent-soft: #2e211b;
+  --accent-contrast: #1c1210;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-newsreader);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* keep anchored sections clear of the sticky nav */
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* Accessible focus rings */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
