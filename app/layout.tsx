@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/lib/content";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import "./globals.css";
