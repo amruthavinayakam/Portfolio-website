@@ -5,7 +5,12 @@ import Section from "./Section";
 import { site, config } from "@/lib/content";
 import { track } from "@/lib/analytics";
 
-type Status = "idle" | "sending" | "success" | "error";
+type Status = "idle" | "sending" | "success" | "handoff" | "error";
+
+// Formspree is what actually delivers submissions to the inbox. Until an
+// endpoint is configured, hand the message off to the visitor's mail client so
+// it still reaches site.links.email instead of disappearing.
+const formspreeReady = !config.formspreeEndpoint.includes("YOUR_FORM_ID");
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
@@ -28,6 +33,22 @@ export default function Contact() {
       nextErrors.message = "Message should be at least 10 characters.";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
+
+    if (!formspreeReady) {
+      const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
+      const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+      window.location.href = `mailto:${site.links.email}?subject=${subject}&body=${body}`;
+      setStatus("handoff");
+      track("contact_form_submitted");
+      form.reset();
+      return;
+    }
+
+    // Formspree reads these to shape the notification email: a readable
+    // subject line, and Reply-To set to the sender so hitting reply in Gmail
+    // goes to them rather than to Formspree.
+    data.set("_subject", `Portfolio enquiry from ${name}`);
+    data.set("_replyto", email);
 
     setStatus("sending");
     try {
@@ -60,15 +81,31 @@ export default function Contact() {
             Drop a message — it goes straight to my inbox.
           </p>
 
-          {status === "success" ? (
+          {status === "success" || status === "handoff" ? (
             <div
               role="status"
               className="mt-6 rounded-xl border border-accent/30 bg-accent-soft p-5 text-sm text-foreground"
             >
-              <p className="font-semibold text-accent">Message sent ✓</p>
-              <p className="mt-1 text-muted">
-                Thanks for reaching out — I&apos;ll get back to you soon.
-              </p>
+              {status === "success" ? (
+                <>
+                  <p className="font-semibold text-accent">Message sent ✓</p>
+                  <p className="mt-1 text-muted">
+                    Thanks for reaching out — I&apos;ll get back to you soon.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="font-semibold text-accent">Almost there</p>
+                  <p className="mt-1 text-muted">
+                    Your email app should have opened with the message ready to
+                    send. If it didn&apos;t, write to{" "}
+                    <a href={`mailto:${site.links.email}`} className="underline">
+                      {site.links.email}
+                    </a>
+                    .
+                  </p>
+                </>
+              )}
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="mt-6 space-y-4">

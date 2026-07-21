@@ -30,8 +30,8 @@ export const site = {
 
   links: {
     github: "https://github.com/amruthavinayakam",
-    linkedin: "https://www.linkedin.com/in/PLACEHOLDER", // PLACEHOLDER — your LinkedIn URL
-    email: "vamrutha.works@gmail.com", // PLACEHOLDER — confirm this is the email you want public
+    linkedin: "https://www.linkedin.com/in/vamrutha1503/",
+    email: "amrutha513851@gmail.com",
     // Put your resume PDF at /public/resume.pdf (any PDF dropped there works).
     resume: "/resume.pdf", // PLACEHOLDER — replace public/resume.pdf with your real resume
   },
@@ -277,10 +277,11 @@ export const hackathons: Hackathon[] = [
 // CONTACT / INTEGRATIONS
 // ---------------------------------------------------------------------------
 export const config = {
-  // 1. Create a free form at https://formspree.io  →  copy its endpoint here.
-  //    It looks like: https://formspree.io/f/abcdwxyz
-  //    Submissions will arrive in your email inbox.
-  formspreeEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // PLACEHOLDER — your Formspree endpoint
+  // 1. Formspree endpoint that delivers contact-form submissions to
+  //    amrutha513851@gmail.com. Manage the form at https://formspree.io.
+  //    If this is ever reset to a placeholder containing "YOUR_FORM_ID", the
+  //    contact form falls back to opening the visitor's mail client instead.
+  formspreeEndpoint: "https://formspree.io/f/xgogzpkn",
 
   // 2. Create a free project at https://posthog.com  →  Project Settings →
   //    copy the Project API key (starts with "phc_") here.
