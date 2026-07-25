@@ -136,8 +136,8 @@ export const projects: Project[] = [
     description:
       "AI tax-review platform prototype: a priority-ranked dashboard, click-any-value source-document traceability, and a trustworthy-AI inspector with explainable confidence — one coherent workflow across 240 returns and 2,500+ documents.",
     tags: ["Next.js", "TypeScript", "AI UX", "Explainable AI", "Design Systems"],
+    github: "https://github.com/amruthavinayakam/ai-tax-portal",
     demo: "https://ai-tax-portal-av.vercel.app/dashboard",
-    // github: "https://github.com/amruthavinayakam/...", // PLACEHOLDER — add repo URL if/when public
   },
   {
     title: "Vigor — AI Fitness Coach",
