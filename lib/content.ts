@@ -160,6 +160,7 @@ export const projects: Project[] = [
       "Autonomous agent that researches companies and roles, then compiles tailored briefs for job applications.", // PLACEHOLDER
     tags: ["Agents", "OpenAI API", "Web Scraping", "Python"], // PLACEHOLDER
     github: "https://github.com/amruthavinayakam/AI_CareerAgent",
+    demo: "https://av-ai-career-agent.vercel.app/",
   },
   {
     title: "LLM Benchmarking",
