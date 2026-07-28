@@ -67,7 +67,7 @@ export const experience: Job[] = [
     dates: "Dec 2025 — Present",
     location: "Pennsauken, NJ",
     bullets: [
-      "Architected a centralized BigQuery data warehouse with scalable schemas and standardized reporting layers, reducing data discrepancies by 15% and saving 8 hours/week.",
+      "Architected a centralized Azure data warehouse with scalable schemas and standardized reporting layers, reducing data discrepancies by 15% and saving 8 hours/week.",
       "Built Random Forest + Logistic Regression models to segment agencies on demographic and behavioral data, driving a 15% increase in distribution; deployed an XGBoost demand-forecasting model to improve planning and resource allocation.",
       "Delivered executive-ready Power BI dashboards and governed KPI reporting powering weekly and monthly operational reviews across Grants, Marketing, and Finance.",
     ],
